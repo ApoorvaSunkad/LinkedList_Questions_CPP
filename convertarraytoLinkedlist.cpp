@@ -29,10 +29,46 @@ Node* convertarray2LL(vector<int> &Arr){
     return head;
 
 }
+int lengthofLL(Node* head){
+    int cnt = 0;
+    Node* temp = head;
+
+    while(temp != NULL){
+        temp = temp->next;
+        cnt++;
+    }
+    return cnt;
+}
+
+int checkIfPresent(Node* head , int val){
+    Node* temp = head;
+
+    while(temp!=NULL){
+        if(temp->data == val){
+            return 1;
+        }
+        temp = temp->next;
+    }
+    return 0;
+}
 
 int main(){
 
     vector<int> Arr = {2,5,8,7};
     Node* head = convertarray2LL(Arr);
-    cout << head->data << endl;
+    //cout << lengthofLL(head) << endl;
+
+    //Printing Head of a LL
+    //cout << head->data << endl;
+
+    //Traversing a LL
+    /*Node* temp = head;
+
+    
+    while(temp != NULL){
+        cout << temp->data << " ";
+        temp = temp->next;
+    }*/
+
+    cout << checkIfPresent(head, 51);
 }
