@@ -37,6 +37,7 @@ void printLL(Node* head){
     cout << endl;
 }
 
+//Deleting the beginning element i.e the element which head is pointing
 Node* deleteHead(Node* head){
     //Edge case
     if(head == NULL){
