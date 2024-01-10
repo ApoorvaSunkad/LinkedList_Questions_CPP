@@ -13,7 +13,6 @@ class Node{
         this->next = NULL;
     }
 };
-
 Node* convertarray2LL(vector<int> &Arr){ 
 //we will be returning the pointer to the head that's why return type is Node*
     int n = Arr.size();
@@ -38,33 +37,6 @@ void printLL(Node* head){
     cout << endl;
 }
 
-Node* deleteEle(Node* head, int ele){
-    //Edge case
-    if(head == NULL){
-        return head;
-    }
-    if(head->data == ele){
-        Node* temp = head;
-        head = head->next;
-        free(temp);
-        return head;
-    }
-
-    Node* temp = head;
-    Node* prev = NULL;
-
-    while(temp != NULL){
-        if(temp->data == ele){
-            prev->next = prev->next->next;
-            break;
-        }
-        prev = temp;
-        temp = temp->next;
-    }
-
-    return head;
-}
-
 Node* insertatHead(Node* head, int val){
     Node* temp = new Node(val);
     temp->next = head;
@@ -78,7 +50,7 @@ int main(){
     cout << node1->data << endl;
     cout << node1->next << endl;*/
 
-    vector<int> Arr = {2,5,8,7,3,1};
+    vector<int> Arr = {2,5,8,7,3};
     Node* head = convertarray2LL(Arr);
 
     head = insertatHead(head,100);
