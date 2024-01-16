@@ -16,15 +16,18 @@ class Node{
     }
 };
 
-Node* deleteHead(Node* head){
-    //edge case
-    if(head == nullptr){
-        return head;
+Node* deleteTail(Node* head){
+    if(head==nullptr || head->next==nullptr){
+        return nullptr;
     }
 
     Node* temp = head;
-    head = head->next;
-    free(temp);
+
+    while(temp->next->next != nullptr){
+        temp = temp->next;
+    }
+    free(temp->next->next);
+    temp->next = nullptr;
 
     return head;
 }
@@ -41,10 +44,10 @@ void printLL(Node* head){
 
 int main(){
 
-    Node* head = new Node(1);
-    Node* second = new Node(2);
-    Node* third = new Node(3);
-    Node* fourth = new Node(4);
+    Node* head = new Node(2);
+    Node* second = new Node(5);
+    Node* third = new Node(8);
+    Node* fourth = new Node(10);
 
     head->next = second;
     second->next = third;
@@ -52,11 +55,7 @@ int main(){
     fourth->next = NULL;
 
     //printLL(head);
-    head = deleteHead(head);
+    head = deleteTail(head);
     printLL(head);
 
 }
-
-//Output:
-//2 3 4
-//After 1 is being deleted
