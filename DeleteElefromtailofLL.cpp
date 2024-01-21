@@ -27,8 +27,8 @@ Node* convertarray2LL(vector<int> &Arr){
     return head;
 
 }
-void printLL(Node* head){
-
+void printLL(Node* head){ //The function is taking LL as input parameter where
+//we are passing the head of the LL.
     Node* temp = head;
 
     while(temp != NULL){

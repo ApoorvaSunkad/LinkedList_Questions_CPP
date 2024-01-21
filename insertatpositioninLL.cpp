@@ -61,6 +61,9 @@ int main(){
 
     printLL(head);
 
-    insertatPos(head,3,22);
+    insertatPos(head,3,28);
+    printLL(head);
+
+    insertatPos(head,4,29);
     printLL(head);
 }
