@@ -53,9 +53,65 @@ bool isCircular(Node *head)
    return 0;
 }
 
+//Another brute force method
+#include<bits/stdc++.h>
+using namespace std;
+
+//T.C = O(N)
+//S.C = O(1)
+
+bool isCircular(Node *head)
+{
+   
+   //Empty list
+   if(head == NULL){
+       return 0;
+   }
+   Node* temp = head->next;
+   
+   while(temp!=NULL && temp != head){
+       temp = temp->next;
+   }
+   
+   if(temp == head){
+       return 1;
+   }
+   return 0;
+}
+
+//Another method using maps
+//T.C = O(N)
+//S.C = O(N)
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isCircular(Node *head)
+{
+   // Your code here
+   
+   if(head == NULL){
+       return false;
+   }
+   map<Node*, bool> mp;
+   
+   Node* temp = head;
+   
+   while(temp!=NULL){
+       //Cycle is present
+        if(mp[temp] == true){
+            return true;
+        }
+    
+        mp[temp] = true;
+        temp = temp->next;
+   }
+   return false;
+}
+
 //Using slow and fast pointers
-//T.C =
-//S.C =
+//T.C = O(N)
+//S.C = O(1)
 
 #include<bits/stdc++.h>
 using namespace std;
