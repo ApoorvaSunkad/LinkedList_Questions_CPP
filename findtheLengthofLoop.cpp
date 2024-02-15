@@ -72,3 +72,44 @@ int countNodesinLoop(struct Node *head)
     
     return 0;
 }
+
+
+//Using tortoise and hare algorithm
+
+
+//T.C = O(N)
+//S.C = O(1)
+
+int findLength(Node* slow, Node* fast){
+    int cnt = 1;
+    
+    fast = fast->next;
+    
+    while(fast!=slow){
+        cnt++;
+        fast = fast->next;
+    }
+    return cnt;
+}
+
+//Function to find the length of a loop in the linked list.
+int countNodesinLoop(struct Node *head)
+{
+    // Code here
+    if(head == NULL){
+        return NULL;
+    }
+    Node* fast = head;
+    Node* slow = head;
+    
+    while(fast!=NULL && fast->next!=NULL){
+        fast = fast->next->next;
+        slow = slow->next;
+        
+        if(fast == slow){
+           return findLength(fast,slow);
+        }
+    }
+
+    return 0;
+}
