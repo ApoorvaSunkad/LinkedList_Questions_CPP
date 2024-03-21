@@ -24,6 +24,38 @@ Expected Auxiliary Space: O(1).
 
 */
 
+//Brute force code: Using stack
+//T.C = O(2N)
+//S.C = O(N), N = no. of nodes
+
+#include<bits/stdc++.h>
+using namespace std;
+
+ListNode* reverseList(ListNode* head) {
+
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
+
+        stack<int> st;
+
+        ListNode* temp = head;
+
+        while(temp!=NULL){
+            st.push(temp->val);
+            temp = temp->next;
+        }
+
+        temp = head;
+
+        while(!st.empty() && temp!=NULL){
+            temp->val = st.top();
+            st.pop();
+            temp = temp->next;
+        }
+        return head;
+    }
+
 #include<bits/stdc++.h>
 using namespace std;
 struct Node
@@ -73,7 +105,6 @@ void reverseLL(Node* &head, Node* curr, Node* prev){
     reverseLL(head,forward,curr);
     curr->next = prev;
 }
-public:
 //Function to reverse a linked list.
 struct Node* reverseList(struct Node *head){
 
@@ -82,18 +113,4 @@ struct Node* reverseList(struct Node *head){
     reverseLL(head,curr,prev);
     return head;
     
-    // if(head == NULL || head->next == NULL){
-    //     return head;
-    // }
-    
-    // Node* prev = NULL;
-    // Node* curr = head;
-    
-    // while(curr!=NULL){
-    //     Node* forward = curr->next;
-    //     curr->next = prev;
-    //     prev = curr;
-    //     curr = forward;
-    // }
-    // return prev;
 }
